@@ -26,7 +26,7 @@
   # returns the total number of arguments passed to the function
   # Hint: google ruby *args
   def how_many_args(*args)
-    args.length
+    args.count
   end
 
 #find_answer
@@ -34,8 +34,8 @@
   # returns nil if it cannot find the 'answer' keyword argument
   # complains when given non-keyword arguments
   # Hint: google ruby keyword arguments
-  def find_answer(args = {})
-    args[:answer]
+  def find_answer(**kwargs)
+    kwargs[:answer]
   end
 
 ##############################
@@ -45,41 +45,60 @@
   # takes in a word
   # returns the first letter of the word
   # lowercases the first letter of the word
+  def first_char(word)
+    word[0].downcase
+  end
 
 #polly_wanna
   # takes in a word
   # echoes the original word
   # repeats the original word 3 times
   # returns a string with the word repeated
+  def polly_wanna(word)
+    word*3
+  end
 
 #count_chars
   # takes in a word
   # returns the number of characters in the word
+  def count_chars(word)
+    word.length
+  end
 
 #yell
   # takes in a message
   # convert the message to uppercase
   # adds an exclamation point to the end of the message
   # returns the message
+  def yell(message)
+    message.upcase + "!"
+  end
 
 ## STRETCH ##
 #to_telegram
   # takes in a message
   # replaces periods with ' STOP'
   # returns the updated message
-
+  def to_telegram message
+    message.gsub(".", " STOP")
+  end
 
 #spell_out
   # takes in a string
   # converts the string to lowercase
   # returns the input string, with characters seperated by dashes
+def spell_out(string)
+  string.downcase.split("").join("-")
+end
 
-
-#seperate
+#separate
   # takes in a string
-  # seperates characters with a custom seperator, when supplied with one
-  # seperates characters with dashes (by default)
+  # separates characters with a custom separator, when supplied with one
+  # separates characters with dashes (by default)
   # returns the modified string
+  def separate(string, separator = '-')
+    string.split("").join(separator)
+  end
 
 ## STRETCH ##
 #croon
@@ -90,7 +109,9 @@
   # determines whether a single word is a palindrome
   # ignores case
   # returns true or false
-
+  def palindrome_word?(word)
+    word.downcase == word.downcase.reverse
+  end
 
 ## SUPER STRETCH ##
 #palindrome_sentence?
