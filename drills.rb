@@ -68,23 +68,28 @@ def yell(msg)
 end
 
 ## STRETCH ##
-#to_telegram
-  # takes in a message
-  # replaces periods with ' STOP'
-  # returns the updated message
 
+# takes in a message
+# replaces periods with ' STOP'
+# returns the updated message
+def to_telegram(msg)
+  msg.gsub(".", " STOP")
+end
 
-#spell_out
-  # takes in a string
-  # converts the string to lowercase
-  # returns the input string, with characters seperated by dashes
+# takes in a string
+# converts the string to lowercase
+# returns the input string, with characters seperated by dashes
+def spell_out(str)
+  str.downcase.split("").join("-")
+end
 
-
-#seperate
-  # takes in a string
-  # seperates characters with a custom seperator, when supplied with one
-  # seperates characters with dashes (by default)
-  # returns the modified string
+# takes in a string
+# seperates characters with a custom seperator, when supplied with one
+# seperates characters with dashes (by default)
+# returns the modified string
+def seperate(str, separator="-")
+  str.split("").join(separator)
+end
 
 ## STRETCH ##
 #croon
