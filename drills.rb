@@ -1,28 +1,35 @@
 #########################
 #### USING ARGUMENTS ####
 #########################
-#say_hello
+def say_hello()
   # returns 'hello'
-
-#echo
+  "hello"
+end
+def echo(str)
   # returns the input string
-
-#eddie_izzards_height
-  # calculates and returns Eddie Izzard's height 
+  str
+end
+def eddie_izzards_height(heels=0)
+  # calculates and returns Eddie Izzard's height
   # takes in the height of heels he's wearing (default value: 0)
   # and adds heel height to his base 67 inches for the result
+  67 + heels
 
-#how_many_args
+end
+def how_many_args(*arg)
   # accepts any number of arguments without complaint
   # returns the total number of arguments passed to the function
   # Hint: google ruby *args
+  arg.length
 
-#find_answer 
+end
+def find_answer(opt = {})
   # returns the value associated with the 'answer' keyword argument
   # returns nil if it cannot find the 'answer' keyword argument
   # complains when given non-keyword arguments
   # Hint: google ruby keyword arguments
-
+  opt[:answer]
+end
 ##############################
 #### MANIPULATING STRINGS ####
 ##############################
