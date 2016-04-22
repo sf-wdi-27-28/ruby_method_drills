@@ -33,39 +33,45 @@ end
 ##############################
 #### MANIPULATING STRINGS ####
 ##############################
-#first_char
+def first_char(word)
   # takes in a word
   # returns the first letter of the word
   # lowercases the first letter of the word
-
-#polly_wanna
+  word.chars[0].downcase
+end
+def polly_wanna(word)
   # takes in a word
   # echoes the original word
   # repeats the original word 3 times
   # returns a string with the word repeated
-
-#count_chars
+  word*3
+end
+def count_chars(word)
   # takes in a word
   # returns the number of characters in the word
-
-#yell
+  word.length
+end
+def yell(message)
   # takes in a message
   # convert the message to uppercase
   # adds an exclamation point to the end of the message
   # returns the message
-
+  message.upcase + "!"
+end
 ## STRETCH ##
-#to_telegram
+def to_telegram(message)
   # takes in a message
   # replaces periods with ' STOP'
   # returns the updated message
+  message.gsub(/[.]/, " STOP")
+end
 
-
-#spell_out
+def spell_out(str)
   # takes in a string
   # converts the string to lowercase
   # returns the input string, with characters seperated by dashes
-
+  str.downcase.split("").join("-")
+end
 
 #seperate
   # takes in a string
@@ -108,11 +114,14 @@ end
 ###########################
 #### LOOPS & ITERATORS ####
 ###########################
-#count_spaces
+def count_spaces (str)
   # takes in a string
   # counts the spaces in a string
   # returns number of spaces
-
+  count = 0
+  str.each_char {|c| count = count + 1 if c ==" " }
+  count
+end
 #string_lengths
   # takes in an array of strings
   # returns an array containing the lengths of the strings
