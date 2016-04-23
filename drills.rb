@@ -70,6 +70,10 @@ end
   # takes in a word
   # returns the number of characters in the word
 
+def count_chars(word)
+  word.length
+end
+
 #yell
   # takes in a message
   # convert the message to uppercase
