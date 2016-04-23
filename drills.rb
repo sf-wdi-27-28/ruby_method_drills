@@ -99,7 +99,9 @@ end
   # takes in a string
   # converts the string to lowercase
   # returns the input string, with characters seperated by dashes
-
+def spell_out(string)
+  string.downcase.split("").join("-")
+end
 
 #seperate
   # takes in a string
