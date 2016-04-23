@@ -62,6 +62,9 @@ end
   # echoes the original word
   # repeats the original word 3 times
   # returns a string with the word repeated
+def polly_wanna(word)
+  word*3
+end
 
 #count_chars
   # takes in a word
