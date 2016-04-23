@@ -383,6 +383,16 @@ end
   # returns NaN for numbers less than 0
   # returns NaN for non-integers
   # calculates and returns the factorial of the input number
+def iterative_factorial(num)
+  return 1 if num == 0 || num == 1
+  return Float::NAN if num < 0 || num % 1.0 != 0
+  nowSum = 1
+  while num > 0
+    nowSum = nowSum * num
+    num -= 1
+  end
+  nowSum
+end
 
 
 
