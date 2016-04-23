@@ -53,6 +53,10 @@ end
   # returns the first letter of the word
   # lowercases the first letter of the word
 
+  def first_char(word)
+    word[0].downcase
+  end
+
 #polly_wanna
   # takes in a word
   # echoes the original word
