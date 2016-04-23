@@ -160,13 +160,9 @@ end
   # ignores case
   # handles weird inputs gracefully
 def is_vowel(char)
-  if !char.is_a?(String)
-    return "Invalid input"
-  else
-    ('aeiou').include?(char.downcase)
-  end
+  return false if !char.is_a?(String)
+  ('aeiou').include?(char.downcase)
 end
-## What does graceful mean in this context???
 
 #add_period
   # takes in a string
@@ -293,6 +289,16 @@ end
   # sorts items by priority ascending (low to high) by default
   # sort order can (optionally) be changed to priority descending
   # the bullet can (optionally) be changed to any symbol
+def compile_agenda(arr, order="DES", bullet="*")
+  sorted_arr = arr.sort_by { |k| k[:priority] }
+  sorted_arr=sorted_arr.reverse if order=="ASC"
+  output_arr = []
+  sorted_arr.each do |el|
+    output_arr.push(bullet + " " + el[:title])
+  end
+  output_arr.join("\n")
+end
+
 
 ##############################
 #### MANIPULATING NUMBERS ####
@@ -355,18 +361,6 @@ end
   # returns an empty array if there are no primes below num
   # does not return the number itself
   # finds all primes less than the given number
-  def is_prime?(num)
-    return false if num <= 1 || num % 1 != 0
-    i = num-1
-    while i > 1
-      if num % i == 0
-        return false
-      end
-      i -= 1
-    end
-    true
-  end
-
 def primes_less_than(num)
   primes_arr = []
   while 0 < num
@@ -407,7 +401,7 @@ end
 def character_count(string)
   count = Hash.new(0)
   string.each_char do |char|
-    count[char] += 1
+    count[char.downcase] += 1
   end
   count
 end
@@ -419,8 +413,25 @@ end
   # ignores case
   # ignores characters that are not in the sequence a-z
   # returns a hash with all the words and their counts
+def word_count(string)
+  string_arr = string.delete("^a-zA-Z ").split(" ")
+  count = Hash.new(0)
+  string_arr.each do |el|
+    count[el.downcase] += 1
+  end
+  count
+end
 
 ## STRETCH ##
 #most_frequent_word
   # takes in a string
   # finds the word in a string that appears with the most frequency
+def most_frequent_word(string)
+  string_arr = string.split(" ")
+  return string if string_arr.length <= 1
+  count = Hash.new(0)
+  string_arr.each do |el|
+    count[el.downcase] += 1
+  end
+  count.max_by{|k,v| return k}
+end
