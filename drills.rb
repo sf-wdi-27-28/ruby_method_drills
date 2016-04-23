@@ -80,6 +80,11 @@ end
   # adds an exclamation point to the end of the message
   # returns the message
 
+def yell(message)
+  message.upcase + "!"
+
+end
+
 ## STRETCH ##
 #to_telegram
   # takes in a message
