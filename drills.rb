@@ -88,14 +88,11 @@ end
   # takes in a string
   # converts the string to lowercase
   # returns the input string, with characters seperated by dashes
-def spell_out(string)
-  string.downcase!
-  string.gsub!('', '-')
-  string[0]=''
-  string[string.length-1]=''
-  string
-end
 
+def spell_out(string)
+  string_arr = string.downcase.split("")
+  string_arr.join("-")
+end
 
 #seperate
   # takes in a string
@@ -103,18 +100,21 @@ end
   # seperates characters with dashes (by default)
   # returns the modified string
 def seperate(string, char='-')
-  string.gsub!('', char)
-  string[0]=''
-  string[string.length-1]=''
-  string
+  string_arr = string.downcase.split("")
+  string_arr.join(char)
 end
 
 ## STRETCH ##
 #croon
   # seperates word characters with dashes
   # preserves whitespace between words
+
 def croon(string)
- string.split(" ").map { |word| word.split("").join("-") }.join(" ")
+  words = []
+ string.split(" ").each do |word|
+   words.push(word.split("").join("-"))
+  end
+  words.join(" ")
 end
 
 #palindrome_word?
@@ -122,14 +122,12 @@ end
   # ignores case
   # returns true or false
 def palindrome_word?(word)
-  if word.length == 1
-    return true
-  elsif word.length % 2 == 0
+  return true if word.length == 1
+  second_half = word[(word.length/2)..word.length]
+  if word.length % 2 == 0
     first_half = word[0..(word.length/2)-1]
-    second_half = word[(word.length/2)..word.length]
   else
     first_half = word[0..(word.length/2)]
-    second_half = word[(word.length/2)..word.length]
   end
   first_half.downcase.reverse == second_half.downcase ? true : false
 end
@@ -142,14 +140,12 @@ end
   # ignores punctuation
 def palindrome_sentence?(string)
   word = string.downcase.gsub(/[^a-z0-9\s]/i, '').delete(' ')
-  if word.length == 1
-    return true
-  elsif word.length % 2 == 0
+  return true if word.length == 1
+  second_half = word[(word.length/2)..word.length]
+  if word.length % 2 == 0
     first_half = word[0..(word.length/2)-1]
-    second_half = word[(word.length/2)..word.length]
   else
     first_half = word[0..(word.length/2)]
-    second_half = word[(word.length/2)..word.length]
   end
   first_half.downcase.reverse == second_half.downcase ? true : false
 end
@@ -171,9 +167,7 @@ end
   # does not add a period if any form of terminal punctuation is present
   # returns the sentence
 def add_period(string)
-  if (".!?").include?(string[-1])
-    return string
-  end
+  return string if (".!?").include?(string[-1])
   string = string + "."
 end
 
@@ -188,9 +182,7 @@ end
 def count_spaces(string)
   counter = 0
   string.each_char do |char|
-    if char == " "
-      counter += 1
-    end
+    counter += 1 if char == " "
   end
   counter
 end
@@ -205,7 +197,6 @@ def string_lengths(arr)
   end
   length_arr
 end
-
 
 #remove_falsy_values
   # takes in a list
@@ -232,7 +223,6 @@ def exclude_first(thing)
   thing[1, thing.length]
 end
 
-
 #exclude_ends
   # takes in an array or string
   # removes the first and last items from an array
@@ -247,9 +237,7 @@ end
 def select_every_even(arr)
   new_arr = []
   arr.each_with_index do |el, i|
-    if i % 2 == 0
-      new_arr << el
-    end
+    new_arr << el if i % 2 == 0
   end
   new_arr
 end
@@ -260,9 +248,7 @@ end
 def select_every_odd(arr)
   new_arr = []
   arr.each_with_index do |el, i|
-    if i % 2 != 0
-      new_arr << el
-    end
+    new_arr << el if i % 2 != 0
   end
   new_arr
 end
@@ -274,9 +260,7 @@ end
 def select_every_n(arr, n=1)
   new_arr = []
   arr.each_with_index do |el, i|
-    if i % n == 0
-      new_arr << el
-    end
+    new_arr << el if i % n == 0
   end
   new_arr
 end
@@ -289,7 +273,7 @@ end
   # sorts items by priority ascending (low to high) by default
   # sort order can (optionally) be changed to priority descending
   # the bullet can (optionally) be changed to any symbol
-def compile_agenda(arr, order="DES", bullet="*")
+def compile_agenda(arr, order="DESC", bullet="*")
   sorted_arr = arr.sort_by { |k| k[:priority] }
   sorted_arr=sorted_arr.reverse if order=="ASC"
   output_arr = []
@@ -348,9 +332,7 @@ def is_prime?(num)
   return false if num <= 1 || num % 1 != 0
   i = num-1
   while i > 1
-    if num % i == 0
-      return false
-    end
+    return false if num % i == 0
     i -= 1
   end
   true
