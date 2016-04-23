@@ -91,6 +91,9 @@ end
   # replaces periods with ' STOP'
   # returns the updated message
 
+def to_telegram(message)
+  message.gsub(/\./, ' STOP')
+end
 
 #spell_out
   # takes in a string
