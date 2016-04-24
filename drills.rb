@@ -103,16 +103,32 @@ def spell_out(string)
   string.downcase.split("").join("-")
 end
 
+# def spell_out(string)
+#   down_string = string.downcase
+#   string.length.times do |i|
+#     print down_string[i], "-"
+#   end
+# end
+
 #seperate
   # takes in a string
   # seperates characters with a custom seperator, when supplied with one
   # seperates characters with dashes (by default)
   # returns the modified string
 
+def seperate(string, seperate="-")
+  string.downcase.split("").join(seperate)
+end
+
 ## STRETCH ##
 #croon
   # seperates word characters with dashes
   # preserves whitespace between words
+
+def croon(string)
+  string.split(" ").map { |word| word.split("").join("-") }.join(" ")
+end
+
 
 #palindrome_word?
   # determines whether a single word is a palindrome
