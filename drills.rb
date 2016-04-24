@@ -187,6 +187,16 @@ end
   # takes in a string
   # counts the spaces in a string
   # returns number of spaces
+def count_spaces(string)
+  count = 0
+  space = " "
+  string.each_char do |i|
+    if i == space
+      count += 1
+    end
+  end
+  return count
+end
 
 #string_lengths
   # takes in an array of strings
