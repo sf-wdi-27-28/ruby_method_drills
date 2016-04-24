@@ -311,6 +311,7 @@ end
     end
   end
 
+  # this isn't able to pass test excep for condition 1
   # require 'prime'
   #
   # def is_prime?(num)
