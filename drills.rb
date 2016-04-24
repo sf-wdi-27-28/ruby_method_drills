@@ -169,14 +169,17 @@ ________________________________________________
   # returns number of spaces
 
   def count_spaces(string)
-    count=0
-    space=" "
+    count = 0
+    space = " "
     string.each_char do |char|
       if char == space
-        count +=1
+        count += 1
       end
+      count
     end
-
+  end
+  # count_spaces()
+  # =>
 ________________________________________________
 
 
