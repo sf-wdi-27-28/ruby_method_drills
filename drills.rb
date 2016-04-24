@@ -150,11 +150,19 @@ end
   # ignores whitespace
   # ignores punctuation
 
+
 #is_vowel
   # takes in a string of one character
   # determines whether the character is a vowel
   # ignores case
   # handles weird inputs gracefully
+
+def is_vowel(one)
+  # vowels = "aeiou"
+  # one_down = one.downcase
+  # vowels.include?(one_down)
+  one.is_a?(String) && !!one.match(/[aeiou]/i)
+end
 
 #add_period
   # takes in a string
