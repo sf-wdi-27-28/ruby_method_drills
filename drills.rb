@@ -198,21 +198,36 @@ end
   # removes the first and last items from an array
   # removes the first and last characters from a string
 def exclude_ends arst
-
+  arst[1..-2]
 end
 
 #select_every_even
   # takes in an array
   # returns a list of even-indexed items from the input
+def select_every_even arr
+  arr.select.with_index do |e, i|
+    e if i.even?
+  end
+end
 
 #select_every_odd
   # takes in an array
   # returns a list of odd-indexed items
+def select_every_odd arr
+  arr.select.with_index do |e, i|
+    e if i.odd?
+  end
+end
 
 #select_every_n
   # takes in an array
   # returns a list of items at an index evenly divisible by n
   # defaults to an n value of 1
+def select_every_n(arr, n=1)
+  arr.select.with_index do |e, i|
+    e if i%n == 0
+  end
+end
 
 ## STRETCH ##
 #compile_agenda
