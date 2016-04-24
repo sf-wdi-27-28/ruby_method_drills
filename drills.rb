@@ -104,6 +104,9 @@ end
 #croon
   # separates word characters with dashes
   # preserves whitespace between words
+  def croon(lyric)
+    lyric.split(" ").map {|word| word.split("").join("-") }.join(" ")
+  end
 
 #palindrome_word?
   # determines whether a single word is a palindrome
@@ -119,12 +122,19 @@ end
   # ignores case
   # ignores whitespace
   # ignores punctuation
+  def palindrome_sentence?(sentence)
+    normalized = sentence.gsub(/[^a-z]/i, "").downcase
+    normalized.reverse == normalized
+  end
 
 #is_vowel
   # takes in a string of one character
   # determines whether the character is a vowel
   # ignores case
   # handles weird inputs gracefully
+  def is_vowel(char)
+    char.is_a?(String) && !!char.match(/[aeiou]/i)
+  end
 
 #add_period
   # takes in a string
@@ -132,6 +142,9 @@ end
   # does not add a period if one is already there
   # does not add a period if any form of terminal punctuation is present
   # returns the sentence
+  def add_period(string)
+    "!?.".include?(string[-1]) ? string : string + "."
+  end
 
 
 ###########################
@@ -230,6 +243,9 @@ end
   # returns an array containing every integer from 0 to n
   # counts up or down
   # rounds off decimals
+  def count_to(num)
+      (0..num.round.to_i).to_a
+  end
 
 #is_integer?
   # takes in a number
@@ -239,6 +255,7 @@ end
   # returns false for Float::NAN
   # returns false for non-numbers
 
+
 #is_prime?
   # takes in a number and checks if it's prime
   # returns false for non-integer decimals
@@ -246,6 +263,10 @@ end
   # returns false for numbers divisible by anything but 1 and themselves
   # returns true for prime numbers
   # Hint: google prime numbers!
+  def is_prime?(num)
+    require 'prime'
+    Prime.prime?(num)
+  end
 
 #primes_less_than
   # takes in a number
@@ -261,8 +282,6 @@ end
   # returns NaN for non-integers
   # calculates and returns the factorial of the input number
 
-
-
 ##############################
 #### MANIPULATING OBJECTS ####
 ##############################
@@ -271,6 +290,18 @@ end
   # counts how many times each character appears in a string
   # ignores case
   # returns the hash
+  def character_count(str)
+    char_counts = {}
+    str.each_char do |char|
+      char = char.downcase
+      if char_counts[char].nil?
+        char_counts[char] = 1
+      else
+        char_counts[char] += 1
+      end
+    end
+    char_counts
+  end
 
 ## STRETCH ##
 #word_count
@@ -279,6 +310,19 @@ end
   # ignores case
   # ignores characters that are not in the sequence a-z
   # returns a hash with all the words and their counts
+  def word_count(str)
+    word_counts = {}
+    str.split(" ").each do |word|
+      word = word.downcase.gsub(/[^a-z]/i, "")
+      if word_counts[word].nil?
+        word_counts[word] = 1
+      else
+        word_counts[word] += 1
+      end
+    end
+    word_counts
+  end
+
 
 ## STRETCH ##
 #most_frequent_word
