@@ -135,6 +135,13 @@ end
   # ignores case
   # returns true or false
 
+def palindrome_word?(word)
+  down_string = word.downcase
+  down_string.reverse == down_string
+
+
+end
+
 
 ## SUPER STRETCH ##
 #palindrome_sentence?
