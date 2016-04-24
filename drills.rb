@@ -3,25 +3,40 @@
 #########################
 #say_hello
   # returns 'hello'
+def say_hello
+  "hello"
+end
 
 #echo
   # returns the input string
+def echo input
+  input
+end
 
 #eddie_izzards_height
-  # calculates and returns Eddie Izzard's height 
+  # calculates and returns Eddie Izzard's height
   # takes in the height of heels he's wearing (default value: 0)
   # and adds heel height to his base 67 inches for the result
+def eddie_izzards_height(heels = 0)
+  67 + heels
+end
 
 #how_many_args
   # accepts any number of arguments without complaint
   # returns the total number of arguments passed to the function
   # Hint: google ruby *args
+def how_many_args (*arg)
+  arg.length
+end
 
-#find_answer 
+#find_answer
   # returns the value associated with the 'answer' keyword argument
   # returns nil if it cannot find the 'answer' keyword argument
   # complains when given non-keyword arguments
   # Hint: google ruby keyword arguments
+def find_answer(answer = {})
+  answer[:answer]
+end
 
 ##############################
 #### MANIPULATING STRINGS ####
@@ -30,34 +45,53 @@
   # takes in a word
   # returns the first letter of the word
   # lowercases the first letter of the word
+def first_char str
+  str[0].downcase
+end
 
 #polly_wanna
   # takes in a word
   # echoes the original word
   # repeats the original word 3 times
   # returns a string with the word repeated
+def polly_wanna word
+  word*3
+end
 
 #count_chars
   # takes in a word
   # returns the number of characters in the word
+def count_chars word
+  word.length
+end
 
 #yell
   # takes in a message
   # convert the message to uppercase
   # adds an exclamation point to the end of the message
   # returns the message
+def yell word
+  word.upcase+"!"
+end
+
 
 ## STRETCH ##
 #to_telegram
   # takes in a message
   # replaces periods with ' STOP'
   # returns the updated message
+def to_telegram word
+  word.gsub ".", " STOP"
+end
 
 
 #spell_out
   # takes in a string
   # converts the string to lowercase
   # returns the input string, with characters seperated by dashes
+def spell_out word
+  word.downcase.split("").join("-")
+end
 
 
 #seperate
@@ -65,11 +99,20 @@
   # seperates characters with a custom seperator, when supplied with one
   # seperates characters with dashes (by default)
   # returns the modified string
+def seperate(word, sep="-")
+  word.split("").join(sep)
+end
 
 ## STRETCH ##
 #croon
   # seperates word characters with dashes
   # preserves whitespace between words
+def croon word
+  v = word.split(" ").map do |c|
+    c.split("").join("-")
+  end
+  v.join(" ")
+end
 
 #palindrome_word?
   # determines whether a single word is a palindrome
@@ -105,31 +148,58 @@
   # takes in a string
   # counts the spaces in a string
   # returns number of spaces
-
+def count_spaces str
+  count = 0
+  str.each_char do |c|
+    if c == " "
+      count += 1
+    end
+  end
+  count
+end
 #string_lengths
   # takes in an array of strings
   # returns an array containing the lengths of the strings
+def string_lengths arr
+  arr.map do |e|
+    e.length
+  end
+end
 
 #remove_falsy_values
   # takes in a list
   # filters out falsy values from a list
   # returns the updated list
+def remove_falsy_values list
+  list.select do |e|
+    !!e
+  end
+end
 
 #exclude_last
   # takes in an array or string
   # removes the last item from the array or string
   # returns it
+def exclude_last arst
+  arst[0..-2]
+end
 
 #exclude_first
   # takes in an array or string
   # removes the first item from an array
   # removes the first character from a string
   # returns a new string - does not alter the original input (non-destructive)
+def exclude_first arst
+  arst[1..-1]
+end
 
 #exclude_ends
   # takes in an array or string
   # removes the first and last items from an array
   # removes the first and last characters from a string
+def exclude_ends arst
+
+end
 
 #select_every_even
   # takes in an array
