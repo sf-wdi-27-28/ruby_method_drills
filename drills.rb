@@ -122,26 +122,43 @@ def count_spaces (str)
   str.each_char {|c| count = count + 1 if c ==" " }
   count
 end
-#string_lengths
+def string_lengths(arr)
   # takes in an array of strings
   # returns an array containing the lengths of the strings
-
-#remove_falsy_values
+  arr.map { |e| e.length  }
+end
+def remove_falsy_values(list)
   # takes in a list
   # filters out falsy values from a list
   # returns the updated list
+  list.keep_if {|e| e!=nil && e!=false}
+end
 
-#exclude_last
+def exclude_last(input)
   # takes in an array or string
   # removes the last item from the array or string
   # returns it
 
-#exclude_first
+  if input.class == Array
+    input.delete(input[-1])
+    input
+  else
+    input.delete(input[-1])
+  end
+end
+
+def exclude_first(input)
   # takes in an array or string
   # removes the first item from an array
   # removes the first character from a string
   # returns a new string - does not alter the original input (non-destructive)
-
+  if input.class == Array
+      newInput = input.delete(input[0])
+      newInput
+  else
+      newInput = input.delete(input[0])
+  end
+end
 #exclude_ends
   # takes in an array or string
   # removes the first and last items from an array
@@ -171,13 +188,30 @@ end
 ##############################
 #### MANIPULATING NUMBERS ####
 ##############################
-#count_to
+def count_to(num)
   # takes in a number
   # returns an array containing every integer from 0 to n
   # counts up or down
   # rounds off decimals
+  arr=[]
+  if num ==0
+    return [0]
+  end
+  n = num
+  n = num.floor
+  if !num.integer? && num < 0
+    n = num.floor + 1
+  end
 
-#is_integer?
+  if n < 0
+    0.downto(n) { |i| arr.push(i) }
+  else
+    0.upto(n) { |i| arr.push(i) }
+  end
+  arr
+end
+
+def is_integer?(num)
   # takes in a number
   # returns true for Fixnums and Bignums (whole number or 'integer' types)
   # returns true for Floats (decimals) equal to integers
@@ -185,13 +219,41 @@ end
   # returns false for Float::NAN
   # returns false for non-numbers
 
-#is_prime?
+
+  if num.class == Integer
+    return true
+  elsif num.class == String
+    return false
+  elsif num == nil
+    return false
+  elsif num == Float::NAN
+    return false
+  elsif num%1 == 0
+    return true
+  else
+    return false
+  end
+end
+def is_prime?(num)
   # takes in a number and checks if it's prime
   # returns false for non-integer decimals
   # returns false for numbers less than or equal to 1
   # returns false for numbers divisible by anything but 1 and themselves
   # returns true for prime numbers
-  # Hint: google prime numbers!
+
+  # amongst the natural numbers greater than 1, a prime number (or a prime)
+  # is such that has no divisors other than itself (and 1). The smallest prime is thus 2
+  if num < 1 || !num.integer?
+    return false
+  else
+    for i in 2..num/2 do
+      if num % i == 0
+        return false
+      end
+    end
+    return true
+  end
+end
 
 #primes_less_than
   # takes in a number
@@ -212,11 +274,17 @@ end
 ##############################
 #### MANIPULATING OBJECTS ####
 ##############################
-#character_count
+def character_count(str)
   # takes in a string
   # counts how many times each character appears in a string
   # ignores case
   # returns the hash
+  h = Hash.new(0)
+  str.each_char do |c|
+    h[c.downcase] +=1
+  end
+  h
+end
 
 ## STRETCH ##
 #word_count
