@@ -86,7 +86,7 @@
 #spell_out
   # takes in a string
   # converts the string to lowercase
-  # returns the input string, with characters seperated by dashes
+  # returns the input string, with characters separated by dashes
 def spell_out(string)
   string.downcase.split("").join("-")
 end
@@ -102,7 +102,7 @@ end
 
 ## STRETCH ##
 #croon
-  # seperates word characters with dashes
+  # separates word characters with dashes
   # preserves whitespace between words
 
 #palindrome_word?

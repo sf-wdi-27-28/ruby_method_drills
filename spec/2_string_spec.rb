@@ -58,7 +58,7 @@ describe "#to_telegram" do
 end
 
 describe "#spell_out" do
-  it "returns the input string, with characters seperated by dashes" do
+  it "returns the input string, with characters separated by dashes" do
     expect( spell_out("h") ).to eq "h"
     expect( spell_out("hey") ).to eq "h-e-y"
     expect( spell_out("hello") ).to eq "h-e-l-l-o"
