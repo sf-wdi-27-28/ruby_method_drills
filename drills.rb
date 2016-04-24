@@ -171,6 +171,14 @@ end
   # does not add a period if any form of terminal punctuation is present
   # returns the sentence
 
+def add_period(string)
+  if "!?.".include?(string[-1]) == false
+    string + "."
+  else
+    string
+  end
+end
+
 
 ###########################
 #### LOOPS & ITERATORS ####
