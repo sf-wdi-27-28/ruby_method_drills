@@ -202,6 +202,12 @@ end
   # takes in an array of strings
   # returns an array containing the lengths of the strings
 
+def string_lengths(arr)
+  arr.map do |str|
+    str.length
+  end
+end
+
 #remove_falsy_values
   # takes in a list
   # filters out falsy values from a list
