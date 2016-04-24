@@ -1,11 +1,12 @@
 #########################
 #### USING ARGUMENTS ####
 #########################
+
 #say_hello
-  # returns 'hello'
-  def say_hello
-    'hello'
-  end
+# returns 'hello'
+def say_hello
+  'hello'
+end
 
 
 #echo
@@ -18,14 +19,21 @@ echo("hey")
 
 
 #eddie_izzards_height
-  # calculates and returns Eddie Izzard's height
-  # takes in the height of heels he's wearing (default value: 0)
-  # and adds heel height to his base 67 inches for the result
+
+def eddie_izzards_height(height_of_heels=0) #setting heels default to 0
+ height_of_heels + 67 #default height plus height of 67 inches
+end
+eddie_izzards_height(7)#=>72
+
 
 #how_many_args
-  # accepts any number of arguments without complaint
-  # returns the total number of arguments passed to the function
-  # Hint: google ruby *args
+
+
+def how_many_args(*args)
+ args.length
+end
+how_many_args(1,2,3,4,5) #=> 5
+
 
 #find_answer
   # returns the value associated with the 'answer' keyword argument
@@ -33,29 +41,40 @@ echo("hey")
   # complains when given non-keyword arguments
   # Hint: google ruby keyword arguments
 
+  def find_answer(kwargs={})
+    kwargs[:answer]
+  end # i looked at the solution for this one - i could not figure it out for the life of me! also i do not understand the answer.
+
 ##############################
 #### MANIPULATING STRINGS ####
 ##############################
 #first_char
-  # takes in a word
-  # returns the first letter of the word
-  # lowercases the first letter of the word
+def first_char(word) # passing in word as param
+  first_letter = word[0]  #taking first letter of word and storing in variable
+  first_letter.downcase #downcasing stored variable
+end
+first_char('JACKIE')
 
 #polly_wanna
-  # takes in a word
-  # echoes the original word
-  # repeats the original word 3 times
-  # returns a string with the word repeated
+def polly_wanna (word) # passing in word
+ word * 3  # repeating word 3 times
+end
+polly_wanna("cracker")
+
 
 #count_chars
-  # takes in a word
-  # returns the number of characters in the word
+
+def count_chars(word)
+  word.length   # returns the number of characters in the word
+end
+count_chars("cheese")
 
 #yell
-  # takes in a message
-  # convert the message to uppercase
-  # adds an exclamation point to the end of the message
-  # returns the message
+def yell(message)
+  loud = message.upcase # converting message to uppercase
+  loud << "!" #adding exclamation point
+end
+yell("i love cheese so much it hurts")
 
 ## STRETCH ##
 #to_telegram
@@ -65,18 +84,21 @@ echo("hey")
 
 
 #spell_out
-  # takes in a string
-  # converts the string to lowercase
-  # returns the input string, with characters seperated by dashes
+def spell_out(string)
+ lowercase = string.downcase #storing lowercase string in variable.
+ lowercase.split("").join("-")#splitting spring into single letters, joining them with dashes
+end
+spell_out("SHERYLCROW")
+
+#separate
+
+def seperate (string, custom_seperator= "-") #(passing in string and custom separator (with default of "-") as params )
+    string.split("").join(custom_seperator) # splitting string and joining with whichever character is passed in as an argument)
+end
+seperate("Hello", "+")
 
 
-#seperate
-  # takes in a string
-  # seperates characters with a custom seperator, when supplied with one
-  # seperates characters with dashes (by default)
-  # returns the modified string
-
-## STRETCH ##
+## STRETCH #
 #croon
   # seperates word characters with dashes
   # preserves whitespace between words
@@ -85,7 +107,11 @@ echo("hey")
   # determines whether a single word is a palindrome
   # ignores case
   # returns true or false
-
+  def palindrome_word?(single_word)
+  word = single_word.downcase
+  word == word.reverse
+  end
+  palindrome_word?("tony")
 
 ## SUPER STRETCH ##
 #palindrome_sentence?
