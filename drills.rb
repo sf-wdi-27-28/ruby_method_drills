@@ -212,11 +212,18 @@ end
   # takes in a list
   # filters out falsy values from a list
   # returns the updated list
+def remove_falsy_values(list)
+  list.select { |item| !!item}
+end
 
 #exclude_last
   # takes in an array or string
   # removes the last item from the array or string
   # returns it
+
+def exclude_last(thing)
+  thing[0..-2]
+end
 
 #exclude_first
   # takes in an array or string
