@@ -274,11 +274,16 @@ end
 ##############################
 #### MANIPULATING OBJECTS ####
 ##############################
-#character_count
-  # takes in a string
-  # counts how many times each character appears in a string
-  # ignores case
-  # returns the hash
+
+# takes in a string
+# counts how many times each character appears in a string
+# ignores case
+# returns the hash
+def character_count(str)
+  letters = Hash.new(0)
+  str.downcase.each_char {|char| letters[char] += 1}
+  letters
+end
 
 ## STRETCH ##
 #word_count
