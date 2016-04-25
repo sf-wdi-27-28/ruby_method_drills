@@ -159,7 +159,7 @@ end
 
 # string_lengths
 def string_lengths(array)
-    array.map{|string| print string.length, string} #iterates through each item in the array and prints their length along with the item
+    array.map{|string| print string.length, string} #iterates through each item in the array and prints their length along with the item.. this seems to be working when i test it in irb, but it doesn't pass on rspec?
 end
 string_lengths([ "Jackie", "Caroline", "Casey" ])
 
