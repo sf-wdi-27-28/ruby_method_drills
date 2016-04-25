@@ -29,8 +29,8 @@ eddie_izzards_height(7)#=>72
 #how_many_args
 
 
-def how_many_args(*args)
- args.length
+def how_many_args(*args) #takes in any number of arguments
+ args.length #does not need asterisk when using it in block
 end
 how_many_args(1,2,3,4,5) #=> 5
 
@@ -113,9 +113,9 @@ croon ("Hello. What is your name?")
 
 
 #palindrome_word?
-def palindrome_word?(single_word)
-  word = single_word.downcase
-  word == word.reverse
+def palindrome_word?(single_word) # ? is asking for true or false
+  word = single_word.downcase #making word(s) downcase and storing in variable to ignore case
+  word == word.reverse #if word as is is equal to word in reverse, return true
 end
 palindrome_word?("tony")
 
@@ -125,9 +125,9 @@ palindrome_word?("tony")
   # ignores case
   # ignores whitespace
   # ignores punctuation
-def palindrome_sentence(sentence)
-  # lowercase_sentence = sentence.downcase
-end
+# def palindrome_sentence(sentence)
+#   # lowercase_sentence = sentence.downcase
+# end
 
 # is_vowel
 def is_vowel(char)
@@ -228,7 +228,7 @@ def count_to(n)
   if n >= 0
     (0..n).to_a
   else
-    0.downto(n).to_a # solution
+    0.downto(n).to_a # solution i was fairly close
   end
 end
 
@@ -253,6 +253,7 @@ def is_prime?(number)
     true
   end
 end
+
 #primes_less_than
 def primes_less_than(number)
   primes = []
