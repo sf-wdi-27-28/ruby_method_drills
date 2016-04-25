@@ -16,10 +16,6 @@
     puts num + 67
   end
 
-  # calculates and returns Eddie Izzard's height
-  # takes in the height of heels he's wearing (default value: 0)
-  # and adds heel height to his base 67 inches for the result
-
 #how_many_args
   def how_many_args(*args)
     puts args.count
@@ -55,8 +51,8 @@
 
 ## STRETCH ##
 #to_telegram
-  def to_telegram(message)
-    puts message.gsub(/\./, " STOP")
+  def to_telegram(string)
+    puts string.gsub(/\./, " STOP")
   end
 
 #spell_out
@@ -90,7 +86,7 @@
     else
       puts false
     end
-    
+
   end
 
 #is_vowel
@@ -145,12 +141,29 @@
   end
 
 #select_every_even
-  # takes in an array
-  # returns a list of even-indexed items from the input
+  def select_every_even(min, max)
+    contents = [*min..max]
+    i = 0
+    num = contents[i]
+    if num % 2 == 0
+      puts num
+    else
+      puts false
+    end
+  end
 
 #select_every_odd
-  # takes in an array
-  # returns a list of odd-indexed items
+  def select_every_odd(min, max)
+    contents = [*min..max]
+    i = 0
+    num = contents[i]
+    if num % 2 == 1
+      puts num
+    else
+      puts false
+    end
+    i += 1
+  end
 
 #select_every_n
   # takes in an array
