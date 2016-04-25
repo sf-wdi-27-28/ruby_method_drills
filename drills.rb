@@ -240,9 +240,17 @@ end
   # removes the first and last items from an array
   # removes the first and last characters from a string
 
+def exclude_ends(thing)
+  thing[1..-2]
+end
+
 #select_every_even
   # takes in an array
   # returns a list of even-indexed items from the input
+
+def select_every_even(arr)
+  arr.select.with_index {|item, index| item if index.even? }
+end
 
 #select_every_odd
   # takes in an array
