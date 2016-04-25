@@ -73,22 +73,36 @@ def spell_out(str)
   str.downcase.split("").join("-")
 end
 
-#seperate
+def seperate(str, seperator = "-")
   # takes in a string
   # seperates characters with a custom seperator, when supplied with one
   # seperates characters with dashes (by default)
   # returns the modified string
-
+  if str.length == 1
+    return str
+  end
+  for i in 1..str.length do
+    if i % 2 != 0
+      str.insert(i, seperator)
+    end
+  end
+  str
+end
 ## STRETCH ##
 #croon
   # seperates word characters with dashes
   # preserves whitespace between words
 
-#palindrome_word?
+def palindrome_word?(word)
   # determines whether a single word is a palindrome
   # ignores case
   # returns true or false
+  if word.downcase == word.downcase.reverse
+    true
+  else false
+  end
 
+end
 
 ## SUPER STRETCH ##
 #palindrome_sentence?
@@ -97,18 +111,34 @@ end
   # ignores whitespace
   # ignores punctuation
 
-#is_vowel
+def is_vowel(char)
   # takes in a string of one character
   # determines whether the character is a vowel
   # ignores case
   # handles weird inputs gracefully
 
-#add_period
+  if char.class != String || char.length != 1
+    return false
+  else
+    vowels = "aeiou"
+    vowels.include? char.downcase
+  end
+end
+
+def add_period(str)
   # takes in a string
   # adds a period to the end of the sentence
   # does not add a period if one is already there
   # does not add a period if any form of terminal punctuation is present
   # returns the sentence
+
+  punctuation = ".,?!"
+  if !punctuation.include?(str[-1])
+    str += "."
+  else
+    str
+  end
+end
 
 
 ###########################
@@ -152,31 +182,60 @@ def exclude_first(input)
   # removes the first item from an array
   # removes the first character from a string
   # returns a new string - does not alter the original input (non-destructive)
-  if input.class == Array
-      newInput = input.delete(input[0])
-      newInput
-  else
-      newInput = input.delete(input[0])
+
+  newStr = ""
+  newArr = []
+  resultEnd = input.length - 1
+  if input.class == String
+    for i in 1..resultEnd do
+      newStr = newStr + input[i].to_s
+    end
+  return newStr
+  elsif input.class == Array
+    for i in 1..resultEnd do
+      newArr = newArr.push(input[i])
+    end
+    newArr
   end
 end
-#exclude_ends
+
+def exclude_ends(input)
   # takes in an array or string
   # removes the first and last items from an array
   # removes the first and last characters from a string
+  if input.class == Array
+    input.delete(input[-1])
+    input.delete(input[0])
+    input
+  else
+    input.delete(input[-1]).delete(input[0])
+  end
+end
 
-#select_every_even
+def select_every_even(arr)
   # takes in an array
   # returns a list of even-indexed items from the input
+  newArr = []
+  arr.each_index {|i| newArr.push(arr[i]) if i % 2 == 0}
+  newArr
+end
 
-#select_every_odd
+def select_every_odd(arr)
   # takes in an array
   # returns a list of odd-indexed items
+  newArr = []
+  arr.each_index {|i| newArr.push(arr[i]) if i % 2 !=0}
+  newArr
+end
 
-#select_every_n
+def select_every_n(arr, n=1)
   # takes in an array
   # returns a list of items at an index evenly divisible by n
   # defaults to an n value of 1
-
+  newArr = []
+  arr.each_index {|i| newArr.push(arr[i]) if i % n == 0}
+  newArr
+end
 ## STRETCH ##
 #compile_agenda
   # converts a list of agenda items into a single string
@@ -198,7 +257,7 @@ def count_to(num)
     return [0]
   end
   n = num
-  n = num.floor
+  n = num.÷floor
   if !num.integer? && num < 0
     n = num.floor + 1
   end
@@ -255,7 +314,7 @@ def is_prime?(num)
   end
 end
 
-#primes_less_than
+#def primes_less_than(num)
   # takes in a number
   # returns an empty array if there are no primes below num
   # does not return the number itself
