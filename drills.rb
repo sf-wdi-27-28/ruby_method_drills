@@ -245,6 +245,32 @@ end
   # returns an array containing every integer from 0 to n
   # counts up or down
   # rounds off decimals
+def count_to num
+  count = 0
+  arr = []
+  if num >= 0
+    while count <= num do
+      arr.push(count)
+      count += 1
+    end
+  else
+    while count >= num do
+      arr.push(count)
+      count -= 1
+    end
+  end
+  arr
+end
+
+# def count_to(n)
+#   n = n.to_i
+#   if n >= 0
+#     (0..n).to_a
+#   else
+#     0.downto(n).to_a
+#   end
+# end
+
 
 #is_integer?
   # takes in a number
@@ -253,6 +279,10 @@ end
   # returns false for non-integer decimals
   # returns false for Float::NAN
   # returns false for non-numbers
+def is_integer? num
+  num.class == Fixnum || num.class == Bignum ||
+    ( num.is_a?(Float) && !num.nan? && num.to_i == num )
+end
 
 #is_prime?
   # takes in a number and checks if it's prime
@@ -262,11 +292,48 @@ end
   # returns true for prime numbers
   # Hint: google prime numbers!
 
+# def is_prime? num
+#   is_integer?(num) && num > 1 && num == 2 && (if num > 3
+#     (3..(num-1)).each do |e|
+#       if num%e == 0
+#         false
+#       end
+#     end
+#   else
+#     true
+#   end)
+#
+# end
+
+def is_prime?(num)
+  if !is_integer?(num) || num <= 1
+    false
+  elsif num <= 1
+    false
+  else
+    (2..(num-1)).each do |n| # throwing an error to bypass is hacky yo
+      if num % n == 0
+        return false
+      end
+    end
+    true
+  end
+end
+
 #primes_less_than
   # takes in a number
   # returns an empty array if there are no primes below num
   # does not return the number itself
   # finds all primes less than the given number
+def primes_less_than num
+  arr = []
+  (2..num-1).each do |e|
+    if is_prime?(e)
+      arr.push(e)
+    end
+  end
+  arr
+end
 
 ## STRETCH ##
 #iterative_factorial
@@ -286,6 +353,18 @@ end
   # counts how many times each character appears in a string
   # ignores case
   # returns the hash
+def character_count word
+  count = {}
+  word!.downcase
+  word.each_char do |i|
+    if count[i]
+      count[i] += 1
+    else
+      count[i] = 1
+    end
+  end
+  count
+end
 
 ## STRETCH ##
 #word_count
