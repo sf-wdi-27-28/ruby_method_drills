@@ -186,6 +186,10 @@ ________________________________________________
 #string_lengths
   # takes in an array of strings
   # returns an array containing the lengths of the strings
+
+  def string_lengths(list)
+    list.map {|str| str.length }
+  end
 ________________________________________________
 
 
@@ -193,6 +197,10 @@ ________________________________________________
   # takes in a list
   # filters out falsy values from a list
   # returns the updated list
+
+  def remove_falsy_values(list)
+    list.select { |item| !!item }
+  end
 ________________________________________________
 
 
@@ -256,6 +264,17 @@ ________________________________________________
   # counts up or down
   # rounds off decimals
 
+  def count_to(n)
+    n = n.to_i
+    if n >= 0
+      (0..n).to_a
+    else
+      0.downto(n).to_a
+    end
+  end
+  
+________________________________________________
+
 #is_integer?
   # takes in a number
   # returns true for Fixnums and Bignums (whole number or 'integer' types)
@@ -263,6 +282,7 @@ ________________________________________________
   # returns false for non-integer decimals
   # returns false for Float::NAN
   # returns false for non-numbers
+________________________________________________
 
 #is_prime?
   # takes in a number and checks if it's prime
@@ -271,12 +291,14 @@ ________________________________________________
   # returns false for numbers divisible by anything but 1 and themselves
   # returns true for prime numbers
   # Hint: google prime numbers!
+________________________________________________
 
 #primes_less_than
   # takes in a number
   # returns an empty array if there are no primes below num
   # does not return the number itself
   # finds all primes less than the given number
+________________________________________________
 
 ## STRETCH ##
 #iterative_factorial
@@ -285,6 +307,7 @@ ________________________________________________
   # returns NaN for numbers less than 0
   # returns NaN for non-integers
   # calculates and returns the factorial of the input number
+________________________________________________
 
 
 
@@ -296,6 +319,7 @@ ________________________________________________
   # counts how many times each character appears in a string
   # ignores case
   # returns the hash
+________________________________________________
 
 ## STRETCH ##
 #word_count
@@ -304,8 +328,10 @@ ________________________________________________
   # ignores case
   # ignores characters that are not in the sequence a-z
   # returns a hash with all the words and their counts
+________________________________________________
 
 ## STRETCH ##
 #most_frequent_word
   # takes in a string
   # finds the word in a string that appears with the most frequency
+________________________________________________
