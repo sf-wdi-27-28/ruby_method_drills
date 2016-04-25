@@ -41,9 +41,9 @@ how_many_args(1,2,3,4,5) #=> 5
   # complains when given non-keyword arguments
   # Hint: google ruby keyword arguments
 
-  def find_answer(kwargs={})
-    kwargs[:answer]
-  end # i looked at the solution for this one - i could not figure it out for the life of me! also i do not understand the answer.
+def find_answer(kwargs={})
+  kwargs[:answer]
+end # i looked at the solution for this one - i could not figure it out for the life of me! also i do not understand the answer.
 
 ##############################
 #### MANIPULATING STRINGS ####
@@ -78,9 +78,11 @@ yell("i love cheese")
 
 ## STRETCH ##
 #to_telegram
-  # takes in a message
-  # replaces periods with ' STOP'
-  # returns the updated message
+def to_telegram(message)
+  message.gsub(/[.]/, 'STOP') #takes in message and substitutes periods with "STOP"
+end
+to_telegram("Hello. I like frogs. That's all.")
+
 
 
 #spell_out
@@ -100,8 +102,15 @@ seperate("Hello", "+")
 
 ## STRETCH #
 #croon
-  # seperates word characters with dashes
   # preserves whitespace between words
+def croon (word)
+  if word.each_char != "" # I feel like I'm getting close.. may come back to figure this out..
+  word.split("").join"-"
+  end
+end
+croon ("Hello. What is your name?")
+
+
 
 #palindrome_word?
 def palindrome_word?(single_word)
@@ -116,10 +125,13 @@ palindrome_word?("tony")
   # ignores case
   # ignores whitespace
   # ignores punctuation
+def palindrome_sentence(sentence)
+  # lowercase_sentence = sentence.downcase
+end
 
 # is_vowel
 def is_vowel(char)
-  char.is_a?(String) && !!char.match(/[aeiou]/i) # used solution (obviously) stumped!!
+  char.is_a?(String) && !!char.match(/[aeiou]/i) # used solution stumped!!
 end
 
 # add_period
@@ -146,10 +158,10 @@ end
 
 
 # string_lengths
-  def string_lengths(a)
-      a.map{|each| print each.length , a}
-  end
-  string_lengths([ "Jackie", "Caroline", "Casey" ])
+def string_lengths(a)
+    a.map{|each| print each.length , each} #iterates through each item in the array and prints their length along with the item
+end
+string_lengths([ "Jackie", "Caroline", "Casey" ])
 
 
 
@@ -157,44 +169,47 @@ end
 #remove_falsy_values
   # takes in a list
 def falsy_values(list)
-list.select { |item| !!item } # stumped yet again.. this solution appears to be slecting each item in the list and returning only non-falsy items?
+  list.select { |item| !!item } # stumped yet again.. this solution appears to be slecting each item in the list and returning only non-falsy items?
 end
 
 #exclude_last
 def exclude_last(string)
-  string.delete(string[-1])
-  return string
+  string[0..-2] #takes out the last character of the string
 end
 exclude_last(["this","is","an","array"])
 
 #exclude_first
-  # takes in an array or string
-  # removes the first item from an array
-  # removes the first character from a string
-  # returns a new string - does not alter the original input (non-destructive)
 def exclude_first(string)
-  new_string = string.delete(string[0])
-  return new_string
+  string[1..-1] #takes out the first character of string
 end
 exclude_first("hello")
 
 #exclude_ends
-  # takes in an array or string
-  # removes the first and last items from an array
-  # removes the first and last characters from a string
+def exclude_ends(string)
+  string[1..-2] # leaves first and last characters out of string
+end
+exclude_ends("cool")
 
 #select_every_even
-  # takes in an array
-  # returns a list of even-indexed items from the input
+def select_every_even(list)
+list.select.with_index {|item, index| item if index.even? } # taken from solution
+end
+
+
 
 #select_every_odd
-  # takes in an array
-  # returns a list of odd-indexed items
+def select_every_odd(list)
+  list.select.with_index{|item, index|item if index.odd?} #solution
+end
+
+select_every_odd(["fda","fdsa","fds","22","4g"])
+
 
 #select_every_n
-  # takes in an array
-  # returns a list of items at an index evenly divisible by n
-  # defaults to an n value of 1
+def select_every_n(list, n=1)
+  list.select.with_index{|item, index|item if index%n==0 } # applied solution from problem above to get this far.. with the rest I feel like i'm close, don't want to use the solution yet!
+end
+  select_every_odd(["fda","fdsa","fds","22","4g"], 2)
 
 ## STRETCH ##
 #compile_agenda
@@ -208,33 +223,49 @@ exclude_first("hello")
 #### MANIPULATING NUMBERS ####
 ##############################
 #count_to
-  # takes in a number
-  # returns an array containing every integer from 0 to n
-  # counts up or down
-  # rounds off decimals
+def count_to(number)
+  n = number.to_i
+  if n>0
+  n[0..n].to_a
+  end
+
+end
+count_to(4)
 
 #is_integer?
-  # takes in a number
-  # returns true for Fixnums and Bignums (whole number or 'integer' types)
-  # returns true for Floats (decimals) equal to integers
-  # returns false for non-integer decimals
-  # returns false for Float::NAN
-  # returns false for non-numbers
+def is_integer?(num)
+  num.class == Fixnum || num.class == Bignum || #used solution - had no clue.
+    ( num.is_a?(Float) && !num.nan? && num.to_i == num )
+end #solution
 
 #is_prime?
-  # takes in a number and checks if it's prime
-  # returns false for non-integer decimals
-  # returns false for numbers less than or equal to 1
-  # returns false for numbers divisible by anything but 1 and themselves
-  # returns true for prime numbers
-  # Hint: google prime numbers!
-
+def is_prime?(number)
+  if !is_integer?(num) || num <= 1
+    false
+  elsif num <= 1
+    false
+  else
+    (2..(num-1)).each do |n|
+      if num % n == 0
+        return false  #solution
+      end
+    end
+    true
+  end
+end
 #primes_less_than
-  # takes in a number
-  # returns an empty array if there are no primes below num
-  # does not return the number itself
-  # finds all primes less than the given number
+def primes_less_than(number)
+  primes = []
+  (2..num-1).each do |n|
+    if is_prime?(n)
+      primes.push n
+    end
+  end
+  primes #solution
+end
 
+
+end
 ## STRETCH ##
 #iterative_factorial
   # takes in a number
@@ -249,10 +280,19 @@ exclude_first("hello")
 #### MANIPULATING OBJECTS ####
 ##############################
 #character_count
-  # takes in a string
-  # counts how many times each character appears in a string
-  # ignores case
-  # returns the hash
+
+def character_count(string)
+  char_counts = {}
+  string.each_char do |char|
+    char = char.downcase
+    if char_counts[char].nil?
+      char_counts[char] = 1 soution
+    else
+      char_counts[char] += 1
+    end
+   end
+  char_counts # solution again..
+end
 
 ## STRETCH ##
 #word_count
