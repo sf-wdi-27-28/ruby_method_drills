@@ -79,7 +79,7 @@ yell("i love cheese")
 ## STRETCH ##
 #to_telegram
 def to_telegram(message)
-  message.gsub(/[.]/, 'STOP') #takes in message and substitutes periods with "STOP"
+  message.gsub(/[.]/, ' STOP') #takes in message and substitutes periods with "STOP"
 end
 to_telegram("Hello. I like frogs. That's all.")
 
@@ -158,8 +158,8 @@ end
 
 
 # string_lengths
-def string_lengths(a)
-    a.map{|each| print each.length , each} #iterates through each item in the array and prints their length along with the item
+def string_lengths(array)
+    array.map{|string| print string.length, string} #iterates through each item in the array and prints their length along with the item
 end
 string_lengths([ "Jackie", "Caroline", "Casey" ])
 
@@ -202,14 +202,14 @@ def select_every_odd(list)
   list.select.with_index{|item, index|item if index.odd?} #solution
 end
 
-select_every_odd(["fda","fdsa","fds","22","4g"])
+
 
 
 #select_every_n
-def select_every_n(list, n=1)
-  list.select.with_index{|item, index|item if index%n==0 } # applied solution from problem above to get this far.. with the rest I feel like i'm close, don't want to use the solution yet!
-end
-  select_every_odd(["fda","fdsa","fds","22","4g"], 2)
+# def select_every_n(list, n=1)
+#   list.select.with_index{|item, index|item if index%n==0 } # applied solution from problem above to get this far.. with the rest I feel like i'm close, don't want to use the solution yet!
+# end
+#   select_every_odd(["fda","fdsa","fds","22","4g"], 2)
 
 ## STRETCH ##
 #compile_agenda
@@ -223,14 +223,14 @@ end
 #### MANIPULATING NUMBERS ####
 ##############################
 #count_to
-def count_to(number)
-  n = number.to_i
-  if n>0
-  n[0..n].to_a
+def count_to(n)
+  n = n.to_i
+  if n >= 0
+    (0..n).to_a
+  else
+    0.downto(n).to_a # solution
   end
-
 end
-count_to(4)
 
 #is_integer?
 def is_integer?(num)
@@ -265,7 +265,7 @@ def primes_less_than(number)
 end
 
 
-end
+
 ## STRETCH ##
 #iterative_factorial
   # takes in a number
@@ -286,7 +286,7 @@ def character_count(string)
   string.each_char do |char|
     char = char.downcase
     if char_counts[char].nil?
-      char_counts[char] = 1 soution
+      char_counts[char] = 1 #solution
     else
       char_counts[char] += 1
     end
