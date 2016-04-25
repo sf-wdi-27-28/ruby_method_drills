@@ -256,6 +256,10 @@ end
   # takes in an array
   # returns a list of odd-indexed items
 
+def select_every_odd(arr)
+  arr.select.with_index { |item, index| item if index.odd? }
+end
+
 #select_every_n
   # takes in an array
   # returns a list of items at an index evenly divisible by n
