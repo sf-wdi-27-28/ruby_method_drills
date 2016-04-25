@@ -231,6 +231,10 @@ end
   # removes the first character from a string
   # returns a new string - does not alter the original input (non-destructive)
 
+def exclude_first(thing)
+  thing[1..-1]
+end
+
 #exclude_ends
   # takes in an array or string
   # removes the first and last items from an array
