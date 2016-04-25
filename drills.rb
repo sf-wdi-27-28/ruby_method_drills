@@ -309,6 +309,11 @@ end
   # returns false for Float::NAN
   # returns false for non-numbers
 
+def is_interger?(num)
+  num.class == Fixnum || num.class == Bignum ||
+    ( num.is_a?(Float) && !num.nan? && num.to_i == num )
+end
+
 #is_prime?
   # takes in a number and checks if it's prime
   # returns false for non-integer decimals
