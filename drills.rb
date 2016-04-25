@@ -262,13 +262,17 @@ def primes_less_than(num)
 end
 
 ## STRETCH ##
-#iterative_factorial
-  # takes in a number
-  # returns 1 for 0 and 1
-  # returns NaN for numbers less than 0
-  # returns NaN for non-integers
-  # calculates and returns the factorial of the input number
-
+# takes in a number
+# returns 1 for 0 and 1
+# returns NaN for numbers less than 0
+# returns NaN for non-integers
+# calculates and returns the factorial of the input number
+def iterative_factorial(num)
+  return Float::NAN if !num.is_a?(Integer) || num < 0
+  fact = 1
+  (1..num).each {|i| fact *= i}
+  fact
+end
 
 
 ##############################
@@ -286,14 +290,30 @@ def character_count(str)
 end
 
 ## STRETCH ##
-#word_count
-  # takes in a string
-  # counts how many times a word appears in a string
-  # ignores case
-  # ignores characters that are not in the sequence a-z
-  # returns a hash with all the words and their counts
+
+# takes in a string
+# counts how many times a word appears in a string
+# ignores case
+# ignores characters that are not in the sequence a-z
+# returns a hash with all the words and their counts
+def word_count(str)
+  words = Hash.new(0)
+  str.downcase.split.each do |word|
+    word = word.tr('^a-z', "")
+    words[word] += 1
+  end
+  words
+end
 
 ## STRETCH ##
-#most_frequent_word
-  # takes in a string
-  # finds the word in a string that appears with the most frequency
+
+# takes in a string
+# finds the word in a string that appears with the most frequency
+def most_frequent_word(str)
+  frqWrd = ""
+  words = word_count(str)
+  words.each do |key|
+    frqWrd = key if words[key] >= words[frqWrd]
+  end
+  frqWrd[0]
+end
