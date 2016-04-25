@@ -208,6 +208,10 @@ ________________________________________________
   # takes in an array or string
   # removes the last item from the array or string
   # returns it
+
+  def exclude_last(sequence)
+    sequence[0..-2]
+  end
 ________________________________________________
 
 
@@ -216,6 +220,10 @@ ________________________________________________
   # removes the first item from an array
   # removes the first character from a string
   # returns a new string - does not alter the original input (non-destructive)
+
+  def exclude_first(sequence)
+    sequence[1..-1]
+  end
 ________________________________________________
 
 
@@ -223,18 +231,30 @@ ________________________________________________
   # takes in an array or string
   # removes the first and last items from an array
   # removes the first and last characters from a string
+
+  def exclude_ends(sequence)
+    sequence[1..-2]
+  end
 ________________________________________________
 
 
 #select_every_even
   # takes in an array
   # returns a list of even-indexed items from the input
+
+  def select_every_even(list)
+    list.select.with_index {|item, index| item if index.even? }
+  end
 ________________________________________________
 
 
 #select_every_odd
   # takes in an array
   # returns a list of odd-indexed items
+
+  def select_every_odd(list)
+    list.select.with_index {|item, index| item if index.odd? }
+  end
 ________________________________________________
 
 
@@ -242,6 +262,10 @@ ________________________________________________
   # takes in an array
   # returns a list of items at an index evenly divisible by n
   # defaults to an n value of 1
+
+  def select_every_n(list, interval=1)
+    list.select.with_index {|item, index| item if index%interval == 0 }
+  end
 ________________________________________________
 
 
@@ -272,7 +296,6 @@ ________________________________________________
       0.downto(n).to_a
     end
   end
-  
 ________________________________________________
 
 #is_integer?
@@ -282,6 +305,11 @@ ________________________________________________
   # returns false for non-integer decimals
   # returns false for Float::NAN
   # returns false for non-numbers
+
+  def is_integer?(num)
+    num.class == Fixnum || num.class == Bignum ||
+    (num.is.a?(Float) && !num.nan? && num.to_i ==num)
+  end
 ________________________________________________
 
 #is_prime?
@@ -291,6 +319,21 @@ ________________________________________________
   # returns false for numbers divisible by anything but 1 and themselves
   # returns true for prime numbers
   # Hint: google prime numbers!
+
+  def is_prime?(num)
+    if !is_integer?(num) || num <= 1 # checking if whole number
+      false
+    elsif num <= 1 # checking if in range
+      false
+    else
+      (2..(num-1)).each do |n|
+        if num % n == 0 # it's not prime
+          return false  # break the loop early
+        end
+      end
+      true
+    end
+  end
 ________________________________________________
 
 #primes_less_than
@@ -298,6 +341,16 @@ ________________________________________________
   # returns an empty array if there are no primes below num
   # does not return the number itself
   # finds all primes less than the given number
+
+  def primes_less_than(num)
+    primes = []
+    (2..num-1).each do |n|
+      if is_prime?(n)
+        primes.push n
+      end
+    end
+    primes
+  end
 ________________________________________________
 
 ## STRETCH ##
@@ -319,6 +372,19 @@ ________________________________________________
   # counts how many times each character appears in a string
   # ignores case
   # returns the hash
+
+  def character_count(sentence)
+    char_counts = {}
+    sentence.each_char do |char|
+      char = char.downcase
+      if char_counts[char].nil?
+        char_counts[char] = 1
+      else
+        char_counts[char] += 1
+      end
+    end
+    char_counts
+  end
 ________________________________________________
 
 ## STRETCH ##
