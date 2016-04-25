@@ -265,6 +265,12 @@ end
   # returns a list of items at an index evenly divisible by n
   # defaults to an n value of 1
 
+def select_every_n(arr, n=1)
+
+  arr.select.with_index { |item, index| item if index%n == 0 }
+
+end
+
 ## STRETCH ##
 #compile_agenda
   # converts a list of agenda items into a single string
@@ -272,6 +278,8 @@ end
   # sorts items by priority ascending (low to high) by default
   # sort order can (optionally) be changed to priority descending
   # the bullet can (optionally) be changed to any symbol
+
+
 
 ##############################
 #### MANIPULATING NUMBERS ####
@@ -281,6 +289,17 @@ end
   # returns an array containing every integer from 0 to n
   # counts up or down
   # rounds off decimals
+
+def count_to(num)
+  num = num.to_i
+  if num >= 0
+    (0..num).to_a
+  else
+    0.downto(num).to_a
+  end
+
+end
+
 
 #is_integer?
   # takes in a number
