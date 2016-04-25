@@ -2,63 +2,63 @@
 #### USING ARGUMENTS ####
 #########################
 #say_hello
-  # returns 'hello'
+  def say_hello(string)
+    puts "hello"
+  end
 
 #echo
-  # returns the input string
+  def echo(string)
+    puts string
+  end
 
 #eddie_izzards_height
-  # calculates and returns Eddie Izzard's height 
-  # takes in the height of heels he's wearing (default value: 0)
-  # and adds heel height to his base 67 inches for the result
+  def eddie_izzards_height(num)
+    puts num + 67
+  end
 
 #how_many_args
-  # accepts any number of arguments without complaint
-  # returns the total number of arguments passed to the function
-  # Hint: google ruby *args
+  def how_many_args(*args)
+    puts args.count
+  end
 
-#find_answer 
-  # returns the value associated with the 'answer' keyword argument
-  # returns nil if it cannot find the 'answer' keyword argument
-  # complains when given non-keyword arguments
-  # Hint: google ruby keyword arguments
+#find_answer
+  def find_answer(**kwargs)
+    puts kwargs[:answer]
+  end
 
 ##############################
 #### MANIPULATING STRINGS ####
 ##############################
 #first_char
-  # takes in a word
-  # returns the first letter of the word
-  # lowercases the first letter of the word
+  def first_char(string)
+    puts string[0].downcase
+  end
 
 #polly_wanna
-  # takes in a word
-  # echoes the original word
-  # repeats the original word 3 times
-  # returns a string with the word repeated
+  def polly_wanna(string)
+    puts string*3
+  end
 
 #count_chars
-  # takes in a word
-  # returns the number of characters in the word
+  def count_chars(string)
+    puts string.length
+  end
 
 #yell
-  # takes in a message
-  # convert the message to uppercase
-  # adds an exclamation point to the end of the message
-  # returns the message
+  def yell(string)
+    puts string.upcase + "!"
+  end
 
 ## STRETCH ##
 #to_telegram
-  # takes in a message
-  # replaces periods with ' STOP'
-  # returns the updated message
-
+  def to_telegram(string)
+    puts string.gsub(/\./, " STOP")
+  end
 
 #spell_out
-  # takes in a string
-  # converts the string to lowercase
-  # returns the input string, with characters seperated by dashes
-
+  def spell_out(string)
+    puts string.split("")
+  end
 
 #seperate
   # takes in a string
@@ -79,16 +79,20 @@
 
 ## SUPER STRETCH ##
 #palindrome_sentence?
-  # determines whether a sentence is a palindrome
-  # ignores case
-  # ignores whitespace
-  # ignores punctuation
+  def palindrome_sentence(string)
+    str = string.delete(" ")
+    if str == str.reverse
+      puts true
+    else
+      puts false
+    end
+
+  end
 
 #is_vowel
-  # takes in a string of one character
-  # determines whether the character is a vowel
-  # ignores case
-  # handles weird inputs gracefully
+  def is_vowel(char)
+    char.is_a?(String) && !!char.match(/[aeiou]/i)
+  end
 
 #add_period
   # takes in a string
@@ -102,9 +106,15 @@
 #### LOOPS & ITERATORS ####
 ###########################
 #count_spaces
-  # takes in a string
-  # counts the spaces in a string
-  # returns number of spaces
+  def count_spaces(string)
+    count = 0
+    string.each_char do |char|
+      if char == " "
+        count += 1
+      end
+    end
+    puts count
+  end
 
 #string_lengths
   # takes in an array of strings
@@ -116,28 +126,44 @@
   # returns the updated list
 
 #exclude_last
-  # takes in an array or string
-  # removes the last item from the array or string
-  # returns it
+  def exclude_last(sequence)
+    puts sequence[0..-2]
+  end
 
 #exclude_first
-  # takes in an array or string
-  # removes the first item from an array
-  # removes the first character from a string
-  # returns a new string - does not alter the original input (non-destructive)
+  def exclude_first(sequence)
+    puts sequence[1..-1]
+  end
 
 #exclude_ends
-  # takes in an array or string
-  # removes the first and last items from an array
-  # removes the first and last characters from a string
+  def exclude_ends(sequence)
+    puts sequence[1..-2]
+  end
 
 #select_every_even
-  # takes in an array
-  # returns a list of even-indexed items from the input
+  def select_every_even(min, max)
+    contents = [*min..max]
+    i = 0
+    num = contents[i]
+    if num % 2 == 0
+      puts num
+    else
+      puts false
+    end
+  end
 
 #select_every_odd
-  # takes in an array
-  # returns a list of odd-indexed items
+  def select_every_odd(min, max)
+    contents = [*min..max]
+    i = 0
+    num = contents[i]
+    if num % 2 == 1
+      puts num
+    else
+      puts false
+    end
+    i += 1
+  end
 
 #select_every_n
   # takes in an array
