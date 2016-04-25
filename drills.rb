@@ -322,6 +322,21 @@ end
   # returns true for prime numbers
   # Hint: google prime numbers!
 
+def is_prime?(num)
+  if !is_integer?(num) || num <= 1
+    false
+  elsif num <= 1
+    false
+  else
+    (2..(num-1)).each do |n|
+      if num % n == 0
+        return false
+      end
+    end
+    true
+  end
+end
+
 #primes_less_than
   # takes in a number
   # returns an empty array if there are no primes below num
