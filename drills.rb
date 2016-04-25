@@ -309,11 +309,10 @@ end
   # returns false for Float::NAN
   # returns false for non-numbers
 
-def is_interger?(num)
+def is_integer?(num)
   num.class == Fixnum || num.class == Bignum ||
     ( num.is_a?(Float) && !num.nan? && num.to_i == num )
 end
-
 #is_prime?
   # takes in a number and checks if it's prime
   # returns false for non-integer decimals
@@ -323,14 +322,15 @@ end
   # Hint: google prime numbers!
 
 def is_prime?(num)
-  if !is_integer?(num) || num <= 1
+  if !is_integer?(num) || num <= 1 # checking if whole number
     false
-  elsif num <= 1
+  elsif num <= 1 # checking if in range
     false
   else
+    # this could be a prime! loop through and check divisibility
     (2..(num-1)).each do |n|
-      if num % n == 0
-        return false
+      if num % n == 0 # it's not prime
+        return false  # break the loop early
       end
     end
     true
@@ -342,6 +342,16 @@ end
   # returns an empty array if there are no primes below num
   # does not return the number itself
   # finds all primes less than the given number
+
+def primes_less_than(num)
+  primes = []
+  (2..num-1).each do |n|
+    if is_prime?(n)
+      primes.push n
+    end
+  end
+  primes
+end
 
 ## STRETCH ##
 #iterative_factorial
@@ -361,6 +371,19 @@ end
   # counts how many times each character appears in a string
   # ignores case
   # returns the hash
+
+def character_count(string)
+  char_counts = {}
+ string.each_char do |char|
+   char = char.downcase
+   if char_counts[char].nil?
+     char_counts[char] = 1
+   else
+     char_counts[char] += 1
+   end
+ end
+ char_counts
+end
 
 ## STRETCH ##
 #word_count
