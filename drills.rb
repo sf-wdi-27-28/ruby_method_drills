@@ -283,9 +283,10 @@ end
 
   def is_integer?(num)
     num.class == Fixnum || num.class == Bignum ||
-    ( num.is_a?(Float) && !num.nan? && num.to_i == num )
+    ( num.is_a?(Float) && !num.nan? && num.to_i == num)
   end
 
+#
 #is_prime?
   # takes in a number and checks if it's prime
   # returns false for non-integer decimals
@@ -295,37 +296,19 @@ end
   # Hint: google prime numbers!
 
 
-  def is_prime?(num)
-    if !num.is_a? Integer || num <= 1
-      false
-    elsif num <= 1
-      false
-    else
-      # this could be a prime! loop through and check divisibility
-      (2..(num-1)).each do |n|
-        if num % n == 0 # it's not prime
-          return false  # break the loop early
-        end
-      end
-      true
-    end
-  end
+  #this is able to pass test except for condition 1
+  #equire 'prime'
 
-  # this isn't able to pass test excep for condition 1
-  # require 'prime'
-  #
-  # def is_prime?(num)
-  #   if !num.is_a? Integer || num <= 1
-  #     false
-  #   elsif num <=1
-  #     false
-  #   elsif num.to_i == num
-  #     false
-  #   elsif !num.nan?
-  #     false
-  #   end
-  #   Prime.prime?(num)
-  # end
+  def is_prime?(num)
+    if num.is_a? Integer || num <= 1
+      false
+    elsif num <=1
+      false
+    elsif !num.is_a? Float
+      false
+    end
+    Prime.prime?(num)
+  end
 
 
 
@@ -385,6 +368,13 @@ end
   # ignores case
   # ignores characters that are not in the sequence a-z
   # returns a hash with all the words and their counts
+
+  # i stop here
+  def word_count(sentence)
+    sentence.split(" ").each do |word|
+    word = word.downcase
+    end
+  end
 
 ## STRETCH ##
 #most_frequent_word
