@@ -244,7 +244,8 @@ end
   # counts up or down
   # rounds off decimals
   def count_to(num)
-      (0..num.round.to_i).to_a
+    num = num.to_i
+    num >= 0 ? (0..num).to_a : 0.downto(num).to_a
   end
 
 #is_integer?
@@ -273,6 +274,15 @@ end
   # returns an empty array if there are no primes below num
   # does not return the number itself
   # finds all primes less than the given number
+  def primes_less_than(num)
+    primes = []
+    (2..num-1).each do |n|
+      if is_prime?(n)
+        primes.push n
+      end
+    end
+    primes
+  end
 
 ## STRETCH ##
 #iterative_factorial
