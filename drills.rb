@@ -74,7 +74,7 @@ def yell(message)
   loud = message.upcase # converting message to uppercase
   loud << "!" #adding exclamation point
 end
-yell("i love cheese so much it hurts")
+yell("i love cheese")
 
 ## STRETCH ##
 #to_telegram
@@ -104,14 +104,11 @@ seperate("Hello", "+")
   # preserves whitespace between words
 
 #palindrome_word?
-  # determines whether a single word is a palindrome
-  # ignores case
-  # returns true or false
-  def palindrome_word?(single_word)
+def palindrome_word?(single_word)
   word = single_word.downcase
   word == word.reverse
-  end
-  palindrome_word?("tony")
+end
+palindrome_word?("tony")
 
 ## SUPER STRETCH ##
 #palindrome_sentence?
@@ -120,47 +117,66 @@ seperate("Hello", "+")
   # ignores whitespace
   # ignores punctuation
 
-#is_vowel
-  # takes in a string of one character
-  # determines whether the character is a vowel
-  # ignores case
-  # handles weird inputs gracefully
+# is_vowel
+def is_vowel(char)
+  char.is_a?(String) && !!char.match(/[aeiou]/i) # used solution (obviously) stumped!!
+end
 
-#add_period
-  # takes in a string
-  # adds a period to the end of the sentence
-  # does not add a period if one is already there
-  # does not add a period if any form of terminal punctuation is present
-  # returns the sentence
+# add_period
+def add_period(input)
+  "!?.".include?(input[-1]) ? input : input + "." # used solution for this one as well
+end
 
 
 ###########################
 #### LOOPS & ITERATORS ####
 ###########################
 #count_spaces
-  # takes in a string
-  # counts the spaces in a string
-  # returns number of spaces
+  # did not get this one on my own, but i was close! i actually understand this solution, though.
+def count_spaces(str) #passing str in as param
+  count = 0 # setting count to 0
+  space = " " # setting space to space
+  str.each_char do |char| #starting loop .. iterating through each character and returns the character
+    if char == space # returned character is compared to space variable. if they are equal...
+      count += 1 #.. then the count increases
+    end
+  end
+  count # count is returned thus declaring how many spaces have been counted.
+end
 
-#string_lengths
-  # takes in an array of strings
-  # returns an array containing the lengths of the strings
+
+# string_lengths
+  def string_lengths(a)
+      a.map{|each| print each.length , a}
+  end
+  string_lengths([ "Jackie", "Caroline", "Casey" ])
+
+
+
 
 #remove_falsy_values
   # takes in a list
-  # filters out falsy values from a list
-  # returns the updated list
+def falsy_values(list)
+list.select { |item| !!item } # stumped yet again.. this solution appears to be slecting each item in the list and returning only non-falsy items?
+end
 
 #exclude_last
-  # takes in an array or string
-  # removes the last item from the array or string
-  # returns it
+def exclude_last(string)
+  string.delete(string[-1])
+  return string
+end
+exclude_last(["this","is","an","array"])
 
 #exclude_first
   # takes in an array or string
   # removes the first item from an array
   # removes the first character from a string
   # returns a new string - does not alter the original input (non-destructive)
+def exclude_first(string)
+  new_string = string.delete(string[0])
+  return new_string
+end
+exclude_first("hello")
 
 #exclude_ends
   # takes in an array or string
