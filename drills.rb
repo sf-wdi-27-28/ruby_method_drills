@@ -96,16 +96,6 @@ end
 # seperates word characters with dashes
 # preserves whitespace between words
 
-# def croon(str) #INCOMPLETE
-#   str.split.each do |word|
-#     word.each_char do |char|
-#       char == " " ? char = " " : res += "#{char}-"
-#     end
-#     word[-1]=""
-#   end
-#   str.join(" ")
-# end
-
 #palindrome_word?
   # determines whether a single word is a palindrome
   # ignores case
@@ -113,11 +103,16 @@ end
 
 
 ## SUPER STRETCH ##
-#palindrome_sentence?
-  # determines whether a sentence is a palindrome
-  # ignores case
-  # ignores whitespace
-  # ignores punctuation
+
+# determines whether a sentence is a palindrome
+# ignores case
+# ignores whitespace
+# ignores punctuation
+def palindrome_sentence?(str)
+  len = str.length/2
+  pal = str.downcase.split.join.tr('^a-z', '')
+  pal[0...len] == pal[-len..-1].reverse
+end
 
 #is_vowel
   # takes in a string of one character
